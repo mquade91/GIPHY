@@ -1,0 +1,30 @@
+button,
+div,
+form,
+input {
+    margin: 10px;
+    font-family: sans-serif;
+}
+
+button {
+    background-color: lightblue;
+    padding: 5px;
+    border-radius: 12px;
+
+}
+
+button:hover {
+    background-color: lightgreen;
+}
+
+input {
+    background-color: lightblue;
+}
+
+#show-input {
+
+    width: 20%;
+    padding: 7px;
+    border-radius: 12px;
+    border: 2px solid lightblue;
+}
