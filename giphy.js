@@ -8,6 +8,7 @@ function renderButtons() {
     // // (this is necessary otherwise we will have repeat buttons)
     $("#shows-view").empty();
 
+
     // Looping through the array of movies
     for (var i = 0; i < netflix.length; i++) {
 
@@ -32,9 +33,15 @@ $("#add-show").on("click", function(event) {
     // event.preventDefault() prevents the form from trying to submit itself.
     // We're using a form so that the user can hit enter instead of clicking the button if they want
     event.preventDefault();
+    $("#shows-view").empty();
+
+
+
+
 
     // This line will grab the text from the input box
     var show = $("#show-input").val().trim();
+    $("#show-input").val("");
 
     // The show from the textbox is then added to our array
     netflix.push(show);
@@ -44,9 +51,7 @@ $("#add-show").on("click", function(event) {
 
 });
 
-
 $(document).on('click', '.show', function(event) {
-
 
     // // calling renderButtons which handles the processing of our movie array
     renderButtons();
@@ -69,6 +74,8 @@ $(document).on('click', '.show', function(event) {
             // Storing an array of results in the results variable
             var results = response.data;
             console.log(results);
+
+
 
             // Looping over every result item
             for (var i = 0; i < results.length; i++) {
@@ -102,26 +109,6 @@ $(document).on('click', '.show', function(event) {
             }
         });
 
-    //}
+
 
 });
-
-
-
-
-
-
-
-
-
-//  // Constructing a URL to search Giphy for the name of the person who said the quote
-//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-//         netflix + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-//     // Performing our AJAX GET request
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//     })
-//     // // After the data comes back from the API
-//     // .done(function(response)
