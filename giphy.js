@@ -30,15 +30,11 @@ renderButtons();
 
 // This function handles events where one button is clicked
 $("#add-show").on("click", function(event) {
-    // event.preventDefault() prevents the form from trying to submit itself.
     // We're using a form so that the user can hit enter instead of clicking the button if they want
+    // event.preventDefault() prevents the form from trying to submit itself.
     event.preventDefault();
+
     $("#shows-view").empty();
-
-
-
-
-
     // This line will grab the text from the input box
     var show = $("#show-input").val().trim();
     $("#show-input").val("");
@@ -92,23 +88,40 @@ $(document).on('click', '.show', function(event) {
                     var p = $("<p>").text("Rating: " + rating);
 
                     //         // Creating an image tag
+                    var animated = results[i].images.fixed_height.url
+
+                    var still = results[i].images.fixed_height_still.url;
                     var personImage = $("<img>");
 
                     // Giving the image tag an src attribute of a proprty pulled off the
                     // result item
-                    personImage.attr("src", results[i].images.fixed_height.url);
+                    personImage.attr("src", still);
+                    personImage.attr('data-still', still);
+                    personImage.attr('data-animated', animated);
+                    personImage.attr('data-state', 'still');
+                    personImage.addClass('searchImage');
 
                     // Appending the paragraph and personImage we created to the "gifDiv" div we created
                     gifDiv.append(p);
                     gifDiv.append(personImage);
+                    $('#searches').append(gifDiv);
 
                     // Prepending the gifDiv to the "#shows-view" div in the HTML
                     $("#shows-view").append(gifDiv);
-
                 }
             }
         });
 
-
+    $(document).on('click', '.searchImage', function() {
+        var state = $(this).attr('data-state');
+        if (state == 'still') {
+            $(this).attr('src', $(this).data('animated'));
+            $(this).attr('data-state', 'animated');
+        }
+        else {
+            $(this).attr('src', $(this).data('still'));
+            $(this).attr('data-state', 'still');
+        }
+    });
 
 });

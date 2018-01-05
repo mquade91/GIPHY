@@ -2,4 +2,9 @@ NETFLIX shows and GIPHY
 
 Have an array of pregenerated buttons that users can click on to display GIFs
 
-add an ajax pull to button
+Also have form section where users can add new buttons by typing in there favorite shows in the text box and clicking
+"Click here to add your favorite show" button
+
+
+
+add an ajax pull to buttons from GIPHY API
