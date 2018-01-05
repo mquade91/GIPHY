@@ -4,6 +4,12 @@ h1 {
 
 }
 
+h3 {
+    text-align: left;
+    color: red;
+
+}
+
 button,
 div,
 form,
